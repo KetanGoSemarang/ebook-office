@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Microsoft Office - Hendri Prasetyo, S.Psi</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Times New Roman', serif;
+    font-size: 12pt;
+    background: #F2F2F2;
+    color: #1a1a1a;
+    line-height: 1.7;
+  }
+
+  /* COVER */
+  .cover {
+    background: linear-gradient(135deg, #FFD700, #FFC107, #FFB300);
+    padding: 80px 40px;
+    text-align: center;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .cover h1 {
+    font-size: 48px;
+    margin: 20px 0 10px;
+    letter-spacing: 3px;
+    color: #1a1a1a;
+    text-shadow: 2px 2px 0 rgba(255,255,255,0.4);
+  }
+
+  .cover h2 {
+    font-size: 26px;
+    color: #333;
+    margin-bottom: 15px;
+  }
+
+  .cover p {
+    font-size: 14pt;
+    color: #444;
+    margin: 5px 0;
+  }
+
+  .cover .author {
+    font-size: 16pt;
+    font-weight: bold;
+    margin-top: 30px;
+    color: #1a1a1a;
+  }
+
+  .cover .copy {
+    font-size: 11pt;
+    color: #555;
+    margin-top: 8px;
+  }
+
+  .icons {
+    margin-bottom: 20px;
+  }
+
+  .icon {
+    display: inline-block;
+    width: 80px;
+    height: 80px;
+    line-height: 80px;
+    border-radius: 15px;
+    color: white;
+    font-size: 32px;
+    font-weight: bold;
+    margin: 0 10px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+    transform: rotate(-5deg);
+  }
+
+  .word { background: #2B579A; }
+  .excel { background: #217346; }
+  .ppt { background: #D24726; }
+
+  .btn {
+    display: inline-block;
+    margin-top: 40px;
+    padding: 16px 40px;
+    background: #1a1a1a;
+    color: #FFD700;
+    text-decoration: none;
+    border-radius: 40px;
+    font-weight: bold;
+    font-size: 14pt;
+    transition: 0.3s;
+  }
+
+  .btn:hover {
+    background: #333;
+    transform: translateY(-3px);
+  }
+
+  /* DAFTAR ISI */
+  .toc {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 60px 30px;
+  }
+
+  .toc h2 {
+    font-size: 28px;
+    border-bottom: 3px solid #FFC107;
+    padding-bottom: 10px;
+    margin-bottom: 30px;
+  }
+
+  .toc a {
+    display: block;
+    padding: 15px 20px;
+    background: white;
+    color: #1a1a1a;
+    text-decoration: none;
+    border-left: 5px solid #FFC107;
+    margin-bottom: 12px;
+    border-radius: 8px;
+    font-size: 14pt;
+    transition: 0.3s;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  }
+
+  .toc a:hover {
+    background: #FFD700;
+    transform: translateX(8px);
+  }
+
+  /* HALAMAN ISI */
+  .page {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 60px 30px;
+    background: #F2F2F2;
+  }
+
+  .page h1 {
+    font-size: 30px;
+    border-bottom: 3px solid #FFC107;
+    padding-bottom: 10px;
+    margin-bottom: 25px;
+  }
+
+  .page h2 {
+    font-size: 20px;
+    margin-top: 35px;
+    margin-bottom: 15px;
+    color: #222;
+  }
+
+  .page h3 {
+    font-size: 14pt;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    color: #444;
+  }
+
+  .page p {
+    margin-bottom: 12px;
+    text-align: justify;
+  }
+
+  .page ul, .page ol {
+    margin-left: 25px;
+    margin-bottom: 15px;
+  }
+
+  .page li {
+    margin-bottom: 6px;
+  }
+
+  .page table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    background: white;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  }
+
+  .page th {
+    background: #FFC107;
+    padding: 12px;
+    text-align: left;
+    font-weight: bold;
+  }
+
+  .page td {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .page code {
+    background: #e8e8e8;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-family: 'Courier New', monospace;
+    font-size: 11pt;
+  }
+
+  .page blockquote {
+    border-left: 4px solid #FFC107;
+    padding: 10px 20px;
+    margin: 15px 0;
+    background: #fffbe6;
+    font-style: italic;
+    color: #555;
+  }
+
+  /* FOOTER */
+  footer {
+    text-align: center;
+    padding: 30px;
+    background: #1a1a1a;
+    color: #FFD700;
+    font-size: 11pt;
+  }
+
+  footer strong { color: #FFC107; }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .cover h1 { font-size: 28px; }
+    .cover h2 { font-size: 18px; }
+    .icon { width: 55px; height: 55px; line-height: 55px; font-size: 22px; }
+    .page h1 { font-size: 22px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ COVER ============ -->
+<div class="cover">
+  <div class="icons">
+    <span class="icon word">W</span>
+    <span class="icon excel">X</span>
+    <span class="icon ppt">P</span>
+  </div>
+  <h1>MICROSOFT OFFICE</h1>
+  <h2>Dari Nol ke Mahir</h2>
+  <p>Panduan Praktis Word, Excel, PowerPoint</p>
+  <p class="author">Hendri Prasetyo, S.Psi</p>
+  <p class="copy">© 2026 — Seluruh hak cipta dilindungi</p>
+  <a href="#daftar-isi" class="btn">Mulai Baca →</a>
+</div>
+
+<!-- ============ DAFTAR ISI ============ -->
+<div class="toc" id="daftar-isi">
+  <h2>Daftar Isi</h2>
+  <a href="#bab1">Bab 1 — Fondasi Office</a>
+  <a href="#bab2">Bab 2 — Word: Mesin Kata</a>
+  <a href="#bab3">Bab 3 — Excel: Otak Angka</a>
+  <a href="#bab4">Bab 4 — PowerPoint: Panggung Ide</a>
+  <a href="#bab5">Bab 5 — Penutup & Lampiran</a>
+</div>
+
+<!-- ============ BAB 1 ============ -->
+<div class="page" id="bab1">
+  <h1>Bab 1: Fondasi Office</h1>
+
+  <h2>1.1 Mengenal Ribbon, Quick Access, dan Status Bar</h2>
+  <p>Office itu seperti kokpit pesawat. Terlalu banyak tombol, tapi kau hanya perlu 20% yang paling sering dipakai.</p>
+
+  <h3>Ribbon</h3>
+  <p>Deretan menu di atas (Home, Insert, Design). Fokus pada <strong>Home</strong> dan <strong>Insert</strong>.</p>
+
+  <h3>Quick Access Toolbar (QAT)</h3>
+  <p>Kotak kecil di pojok kiri atas. Tambahkan: Save, Undo, Redo, Print Preview.</p>
+
+  <h3>Status Bar</h3>
+  <p>Di bagian bawah. Klik kanan → aktifkan Page Number, Word Count, Zoom.</p>
+
+  <h2>Shortcut Wajib</h2>
+  <table>
+    <tr><th>Fungsi</th><th>Windows</th><th>Mac</th></tr>
+    <tr><td>Simpan</td><td><code>Ctrl+S</code></td><td><code>Cmd+S</code></td></tr>
+    <tr><td>Buka</td><td><code>Ctrl+O</code></td><td><code>Cmd+O</code></td></tr>
+    <tr><td>Cetak</td><td><code>Ctrl+P</code></td><td><code>Cmd+P</code></td></tr>
+    <tr><td>Undo</td><td><code>Ctrl+Z</code></td><td><code>Cmd+Z</code></td></tr>
+  </table>
+
+  <h2>1.2 Menyimpan File</h2>
+  <blockquote>Jangan percaya autosave saja. Suatu hari kau akan menutup file tanpa menyimpan, dan autosave tidak menolong.</blockquote>
+  <ol>
+    <li>Tekan <code>Ctrl+S</code> setiap selesai 1 paragraf.</li>
+    <li>Simpan di 2 tempat: laptop + cloud.</li>
+    <li>Gunakan versi: <code>Laporan_v1.docx</code>, <code>Laporan_v2.docx</code>.</li>
+  </ol>
+
+  <h2>1.3 Tampilan Nyaman untuk Mata</h2>
+  <ul>
+    <li><strong>Zoom:</strong> Ctrl + scroll mouse. Atur 100–120%.</li>
+    <li><strong>Dark Mode:</strong> File → Options → General → Office Theme → Dark Gray.</li>
+    <li><strong>Sembunyikan penggaris:</strong> View → Ruler.</li>
+  </ul>
+
+  <h2>Latihan Mini (5 menit)</h2>
+  <ol>
+    <li>Buka Word kosong.</li>
+    <li>Tambahkan Save dan Print Preview ke Quick Access Toolbar.</li>
+    <li>Ganti tema ke Dark Gray.</li>
+    <li>Simpan file: <code>Latihan_Office_1.docx</code>.</li>
+  </ol>
+  <p><em>Jika berhasil, kau sudah lebih maju dari 70% pengguna Office.</em></p>
+</div>
+
+<!-- ============ BAB 2 ============ -->
+<div class="page" id="bab2">
+  <h1>Bab 2: Word — Mesin Kata</h1>
+
+  <h2>2.1 Gaya (Style) — Rahasia Dokumen Rapi Instan</h2>
+  <p>Kebanyakan orang memformat teks manual: bold, ukuran 14, warna biru, diulang 50 kali. Itu buang waktu.</p>
+  <p><strong>Solusi: Style.</strong></p>
+  <ol>
+    <li>Tulis judul → klik <strong>Heading 1</strong>.</li>
+    <li>Tulis sub-judul → klik <strong>Heading 2</strong>.</li>
+    <li>Teks biasa → klik <strong>Normal</strong>.</li>
+  </ol>
+  <p><strong>Keajaibannya:</strong></p>
+  <ul>
+    <li>Daftar isi otomatis muncul dalam 1 detik.</li>
+    <li>Ubah style Heading 1 → semua judul berubah serempak.</li>
+  </ul>
+
+  <h2>2.2 Daftar Isi Otomatis</h2>
+  <ol>
+    <li>Pastikan semua judul pakai <strong>Heading 1, 2, 3</strong>.</li>
+    <li>Letakkan kursor di halaman pertama.</li>
+    <li>Klik <strong>References → Table of Contents</strong> → pilih gaya otomatis.</li>
+    <li>Update setelah edit: klik daftar isi → <strong>Update Table</strong>.</li>
+  </ol>
+
+  <h2>2.3 Mail Merge — Satu Surat, Seribu Penerima</h2>
+  <p>Bayangkan mengirim undangan ke 500 orang, tapi tiap surat menyebut nama mereka. Tanpa Mail Merge, kau akan gila.</p>
+  <p><strong>Bahan:</strong> File Word (template) + File Excel (data penerima).</p>
+  <ol>
+    <li>Di Word: <strong>Mailings → Start Mail Merge → Letters</strong>.</li>
+    <li><strong>Select Recipients → Use an Existing List</strong> → pilih file Excel.</li>
+    <li>Klik <strong>Insert Merge Field</strong> → pilih kolom.</li>
+    <li><strong>Preview Results</strong> → lihat surat pertama berubah.</li>
+    <li><strong>Finish & Merge → Edit Individual Documents</strong> → "All".</li>
+  </ol>
+
+  <h2>2.4 Tabel di Word — Tidak Harus Berantakan</h2>
+  <ol>
+    <li><strong>Insert → Table</strong> → max 5–6 kolom agar terbaca.</li>
+    <li><strong>AutoFit to Window</strong> — klik kanan → AutoFit.</li>
+    <li><strong>Header berulang</strong> — pilih baris pertama → Table Design → Header Row → Layout → Repeat Header Rows.</li>
+    <li><strong>Border tipis</strong> — hindari border tebal.</li>
+  </ol>
+
+  <h2>2.5 Rumus Sederhana di Tabel Word</h2>
+  <ol>
+    <li>Kursor di sel hasil.</li>
+    <li><strong>Layout → Data → Formula</strong>.</li>
+    <li>Tulis: <code>=SUM(ABOVE)</code> — jumlahkan semua angka di atas.</li>
+    <li>Klik OK. Jika angka berubah, klik kanan → Update Field.</li>
+  </ol>
+
+  <h2>2.6 Makro — Rekam Tugas Berulang</h2>
+  <ol>
+    <li><strong>View → Macros → Record Macro</strong>.</li>
+    <li>Beri nama: <code>FormatLaporan</code>.</li>
+    <li>Lakukan tindakan (ubah font, margin, header).</li>
+    <li><strong>View → Macros → Stop Recording</strong>.</li>
+    <li>Jalankan: <strong>View → Macros → View Macros</strong> → Run.</li>
+  </ol>
+
+  <h2>Latihan Bab 2 (15 menit)</h2>
+  <ol>
+    <li>Buat surat undangan Mail Merge untuk 5 nama fiktif.</li>
+    <li>Buat tabel daftar barang dengan 4 kolom, tambahkan rumus SUM.</li>
+    <li>Rekam makro: ubah teks jadi Arial 12, spasi 1.5.</li>
+    <li>Simpan: <code>Latihan_Word_Hendri.docx</code>.</li>
+  </ol>
+</div>
+
+<!-- ============ BAB 3 ============ -->
+<div class="page" id="bab3">
+  <h1>Bab 3: Excel — Otak Angka</h1>
+
+  <h2>3.1 5 Rumus Wajib yang Menggantikan 50 Rumus</h2>
+
+  <h3>#1: XLOOKUP</h3>
+  <p><code>=XLOOKUP("Hendri", A:A, C:C)</code> → cari "Hendri" di kolom A, ambil dari kolom C.</p>
+
+  <h3>#2: IFS</h3>
+  <p><code>=IFS(A1&gt;90,"A", A1&gt;80,"B", A1&gt;70,"C", TRUE,"D")</code></p>
+
+  <h3>#3: SUMPRODUCT</h3>
+  <p><code>=SUMPRODUCT(A2:A10, B2:B10)</code> → A2*B2 + A3*B3 + ...</p>
+
+  <h3>#4: TEXTJOIN</h3>
+  <p><code>=TEXTJOIN(", ", TRUE, A2:A10)</code> → gabung teks dengan koma.</p>
+
+  <h3>#5: UNIQUE</h3>
+  <p><code>=UNIQUE(B2:B100)</code> → tampilkan nilai unik tanpa duplikat.</p>
+
+  <h2>3.2 PivotTable — Laporan Ringkas Tanpa Rumus</h2>
+  <ol>
+    <li>Pilih data (Ctrl+A).</li>
+    <li><strong>Insert → PivotTable → New Worksheet</strong>.</li>
+    <li>Seret kolom: Rows: Kota, Columns: Produk, Values: Penjualan (SUM).</li>
+    <li>Selesai.</li>
+  </ol>
+
+  <h2>3.3 Power Query — Bersihkan Data Kotor</h2>
+  <ol>
+    <li><strong>Data → Get Data → From File → From Text/CSV</strong>.</li>
+    <li>Klik kanan kolom "Tanggal" → <strong>Change Type → Date</strong>.</li>
+    <li>Hapus kolom tidak perlu → Remove.</li>
+    <li><strong>Close & Load</strong> ke worksheet baru.</li>
+  </ol>
+
+  <h2>3.4 Grafik yang Tepat Sasaran</h2>
+  <table>
+    <tr><th>Pesan</th><th>Grafik</th></tr>
+    <tr><td>Perbandingan</td><td>Bar/Column</td></tr>
+    <tr><td>Tren waktu</td><td>Line</td></tr>
+    <tr><td>Proporsi</td><td>Pie/Donut</td></tr>
+    <tr><td>Korelasi</td><td>Scatter</td></tr>
+  </table>
+
+  <h2>3.5 Validasi Data — Cegah Salah Input</h2>
+  <ol>
+    <li>Pilih sel/kolom.</li>
+    <li><strong>Data → Data Validation</strong>.</li>
+    <li>Allow → List → Source: <code>Jakarta, Bandung, Surabaya</code>.</li>
+    <li>Klik OK.</li>
+  </ol>
+
+  <h2>3.6 Conditional Formatting — Warnai Data Otomatis</h2>
+  <ol>
+    <li>Pilih data.</li>
+    <li><strong>Home → Conditional Formatting → Highlight Cells Rules</strong>.</li>
+    <li>Greater Than → 1000 → warna hijau.</li>
+  </ol>
+
+  <h2>Latihan Bab 3 (15 menit)</h2>
+  <ol>
+    <li>Buat data 20 baris: Nama, Kota, Penjualan.</li>
+    <li>Buat PivotTable: total per kota.</li>
+    <li>Buat grafik batang dari PivotTable.</li>
+    <li>Terapkan Conditional Formatting: penjualan &gt; 5.000.000 → hijau.</li>
+    <li>Simpan: <code>Latihan_Excel_Hendri.xlsx</code>.</li>
+  </ol>
+</div>
+
+<!-- ============ BAB 4 ============ -->
+<div class="page" id="bab4">
+  <h1>Bab 4: PowerPoint — Panggung Ide</h1>
+
+  <h2>4.1 Master Slide — Desain Sekali, Pakai Selamanya</h2>
+  <ol>
+    <li><strong>View → Slide Master</strong>.</li>
+    <li>Ubah font, warna, logo di slide paling atas.</li>
+    <li>Tutup Master View.</li>
+  </ol>
+  <p>Hasil: semua slide otomatis mengikuti desain.</p>
+
+  <h2>4.2 5 Aturan Desain Slide</h2>
+  <ol>
+    <li>Satu slide, satu ide.</li>
+    <li>Teks maksimal 6 baris.</li>
+    <li>Kontras tinggi: teks gelap, latar terang.</li>
+    <li>Gambar &gt; teks.</li>
+    <li>Font konsisten (max 2 jenis).</li>
+  </ol>
+
+  <h2>4.3 Animasi yang Menolong, Bukan Mengganggu</h2>
+  <ul>
+    <li>Gunakan <strong>Fade</strong> atau <strong>Appear</strong> — jangan Fly In, Bounce, Spin.</li>
+    <li>Animasi hanya untuk: menampilkan poin satu per satu, menyorot data penting.</li>
+    <li>Transisi: cukup <strong>Fade</strong> atau <strong>Push</strong>.</li>
+  </ul>
+
+  <h2>4.4 Menyisipkan Excel & Word dengan Elegan</h2>
+  <p><strong>Dari Excel:</strong> Copy data → Paste Special → Excel Worksheet Object.</p>
+  <p><strong>Dari Word:</strong> Copy → Paste Special → Formatted Text (RTF).</p>
+
+  <h2>Latihan Bab 4 (15 menit)</h2>
+  <ol>
+    <li>Buat Master Slide: logo di pojok kanan atas, font Montserrat.</li>
+    <li>Buat 5 slide: Judul, Agenda, 3 Konten.</li>
+    <li>Terapkan animasi Fade pada poin konten.</li>
+    <li>Simpan: <code>Latihan_PPT_Hendri.pptx</code>.</li>
+  </ol>
+</div>
+
+<!-- ============ BAB 5 ============ -->
+<div class="page" id="bab5">
+  <h1>Bab 5: Penutup & Lampiran</h1>
+
+  <h2>Glosarium</h2>
+  <table>
+    <tr><th>Istilah</th><th>Arti</th></tr>
+    <tr><td>Ribbon</td><td>Deretan menu di atas Office</td></tr>
+    <tr><td>Style</td><td>Format otomatis untuk teks</td></tr>
+    <tr><td>Mail Merge</td><td>Gabung surat dengan data</td></tr>
+    <tr><td>PivotTable</td><td>Ringkasan data interaktif</td></tr>
+    <tr><td>Power Query</td><td>Alat bersihkan data</td></tr>
+    <tr><td>Master Slide</td><td>Template desain PowerPoint</td></tr>
+    <tr><td>Makro</td><td>Rekaman tugas otomatis</td></tr>
+  </table>
+
+  <h2>20 Shortcut Terbaik</h2>
+  <table>
+    <tr><th>Fungsi</th><th>Windows</th><th>Mac</th></tr>
+    <tr><td>Simpan</td><td><code>Ctrl+S</code></td><td><code>Cmd+S</code></td></tr>
+    <tr><td>Buka</td><td><code>Ctrl+O</code></td><td><code>Cmd+O</code></td></tr>
+    <tr><td>Cetak</td><td><code>Ctrl+P</code></td><td><code>Cmd+P</code></td></tr>
+    <tr><td>Undo</td><td><code>Ctrl+Z</code></td><td><code>Cmd+Z</code></td></tr>
+    <tr><td>Redo</td><td><code>Ctrl+Y</code></td><td><code>Cmd+Shift+Z</code></td></tr>
+    <tr><td>Pilih semua</td><td><code>Ctrl+A</code></td><td><code>Cmd+A</code></td></tr>
+    <tr><td>Cari</td><td><code>Ctrl+F</code></td><td><code>Cmd+F</code></td></tr>
+    <tr><td>Ganti</td><td><code>Ctrl+H</code></td><td><code>Cmd+H</code></td></tr>
+    <tr><td>Bold</td><td><code>Ctrl+B</code></td><td><code>Cmd+B</code></td></tr>
+    <tr><td>Italic</td><td><code>Ctrl+I</code></td><td><code>Cmd+I</code></td></tr>
+    <tr><td>Underline</td><td><code>Ctrl+U</code></td><td><code>Cmd+U</code></td></tr>
+    <tr><td>Copy</td><td><code>Ctrl+C</code></td><td><code>Cmd+C</code></td></tr>
+    <tr><td>Paste</td><td><code>Ctrl+V</code></td><td><code>Cmd+V</code></td></tr>
+    <tr><td>Cut</td><td><code>Ctrl+X</code></td><td><code>Cmd+X</code></td></tr>
+    <tr><td>New</td><td><code>Ctrl+N</code></td><td><code>Cmd+N</code></td></tr>
+    <tr><td>Close</td><td><code>Ctrl+W</code></td><td><code>Cmd+W</code></td></tr>
+    <tr><td>Filter Excel</td><td><code>Ctrl+Shift+L</code></td><td><code>Cmd+Shift+L</code></td></tr>
+    <tr><td>Insert Date</td><td><code>Ctrl+;</code></td><td><code>Cmd+;</code></td></tr>
+    <tr><td>New Slide</td><td><code>Ctrl+M</code></td><td><code>Cmd+M</code></td></tr>
+    <tr><td>Zoom</td><td><code>Ctrl+Scroll</code></td><td><code>Cmd+Scroll</code></td></tr>
+  </table>
+
+  <h2>Tentang Penulis</h2>
+  <p><strong>Hendri Prasetyo, S.Psi</strong></p>
+  <p>Penulis adalah praktisi produktivitas yang telah menghabiskan ribuan jam di depan Microsoft Office. Ia percaya bahwa alat sederhana—jika digunakan dengan benar—bisa mengubah cara orang bekerja.</p>
+  <p>Buku ini adalah hasil distilasi dari pengalaman nyata: laporan, presentasi, analisis data, dan kesalahan yang sama yang dilihatnya dilakukan 1.000 orang.</p>
+  <p>Ia menulis dengan satu tujuan: <strong>membuatmu selesai kerja lebih cepat, agar kau punya waktu untuk hal yang benar-benar penting.</strong></p>
+
+  <p style="text-align:center; margin-top:40px;"><strong>© 2026 Hendri Prasetyo, S.Psi</strong><br>Seluruh hak cipta dilindungi.</p>
+</div>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  © 2026 <strong>Hendri Prasetyo, S.Psi</strong> — Microsoft Office: Dari Nol ke Mahir
+</footer>
+
+</body>
+</html>
